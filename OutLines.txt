@@ -1,0 +1,8 @@
+[1] create 4 types of array
+[2] determine the type of task to store it in suitable array
+[3] create object holds data of task
+[4] push data into suitable array
+[5] store data in local storage
+[6] display elements on page
+[7] create delete button
+[8] create update button
