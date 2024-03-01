@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="4-Do list is a simple and effective way to manage your tasks and time. It is based on the Eisenhower matrix, which is a simple and effective time management tool."
+    />
+
+    <!--~~~~~~~$ Shortcut Image $~~~~~~~-->
+    <link rel="icon" type="image/x-icon" href="./listIcon.svg" />
+
+    <!--~~~~~~~$ Main Styling Sheet $~~~~~~~-->
+    <link rel="stylesheet" href="style.css" />
+
+    <title>4-Do</title>
+  </head>
+  <body>
+    <div class="container">
+      <!--~~~~~~~$ To DO Header $~~~~~~~-->
+      <div class="taskData">
+        <h1>Add New Task</h1>
+
+        <form class="dataInput">
+          <div>
+            <label for="input">Task:</label> <input type="text" id="input" />
+          </div>
+
+          <div>
+            <label for="task-priority">Priority:</label>
+            <select class="selection-box" id="task-priority">
+              <option value="important-urgent" id="important-urgent">
+                Important and Urgent
+              </option>
+              <option value="important-not-urgent" id="important-not-urgent">
+                Important and Not Urgent
+              </option>
+              <option value="not-important-urgent" id="not-important-urgent">
+                Not Important and Urgent
+              </option>
+              <option
+                value="not-important-not-urgent"
+                id="not-important-not-urgent"
+              >
+                Not Important and Not Urgent
+              </option>
+            </select>
+          </div>
+        </form>
+
+        <button id="add-btn">add new task</button>
+
+        <a href="https://youtu.be/7VCnBn5ryrE" target="_blank"
+          >to know more about 4-Do advantages click me</a
+        >
+      </div>
+
+      <!--~~~~~~~$ Task Boxes $~~~~~~~-->
+      <div class="taskBox">
+        <!-- Important And Urgent Box -->
+        <div class="box" id="important-urgent">
+          <h2>important-urgent</h2>
+          <div class="tasks-info taskDiv1"></div>
+
+          <button class="deleteAll">delete all</button>
+        </div>
+
+        <!-- Important And Not Urgent Box -->
+        <div class="box" id="important-not-urgent">
+          <h2>important-not-urgent</h2>
+          <div class="tasks-info taskDiv2"></div>
+          <button class="deleteAll">delete all</button>
+        </div>
+
+        <!-- Not Important And Urgent Box -->
+        <div class="box" id="not-important-urgent">
+          <h2>not-important-urgent</h2>
+          <div class="tasks-info taskDiv3"></div>
+          <button class="deleteAll">delete all</button>
+        </div>
+
+        <!-- Not Important And Not Urgent Box -->
+        <div class="box" id="not-important-not-urgent">
+          <h2>not-important-not-urgent</h2>
+          <div class="tasks-info taskDiv4"></div>
+          <button class="deleteAll">delete all</button>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer" id="footer"></footer>
+  </body>
+  <script src="main.js"></script>
+</html>

@@ -1,0 +1,377 @@
+/*------------------! Start Global Styling !------------------*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+body {
+  background: rgb(19, 19, 19);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+.container {
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
+a {
+  text-decoration: none;
+  font-weight: bold;
+  color: #d1caca;
+  transition: 0.3s ease-in-out;
+  text-decoration: underline;
+  text-align: center;
+}
+a:hover {
+  color: rgb(14, 27, 171);
+}
+/*------------------! End Global Styling !------------------*/
+
+/*------------------! Start Header Styling !------------------*/
+.taskData {
+  background-color: #1b1b1b;
+  width: 100%;
+  margin: 30px auto;
+  padding: 40px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+}
+.taskData h1 {
+  color: #fff;
+  font-size: 2rem;
+  margin: 20px 0;
+}
+.dataInput {
+  gap: 10px;
+  width: 60%;
+}
+form div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+input {
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  font-size: 20px;
+}
+.selection-box {
+  padding: 10px;
+  border-radius: 5px;
+  background: #f1f1f1;
+  border-radius: 10px;
+  overflow: hidden;
+  padding: 10px;
+  border: none;
+  color: #333;
+  text-transform: capitalize;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+}
+.selection-box option {
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: capitalize;
+  cursor: pointer;
+}
+#add-btn {
+  width: 60%;
+  background: rgb(224, 164, 44);
+  padding: 10px 0px;
+  border-radius: 8px;
+  border: none;
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: 0.4s ease-in-out;
+}
+#add-btn:hover {
+  background-color: #333;
+  color: #fff;
+  cursor: pointer;
+  letter-spacing: 2px;
+}
+/*------------------! End Header Styling !------------------*/
+
+/*------------------! Start Task Boxes Styling !------------------*/
+.taskBox {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+.box {
+  background-color: #222;
+  width: 24%;
+  margin: 10px auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  border-radius: 10px;
+}
+.box h2 {
+  margin-top: 20px;
+  text-align: center;
+  text-transform: capitalize;
+}
+.tasks-info {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.task {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #fff;
+  padding: 10px;
+  border-radius: 10px;
+  width: 90%;
+  text-align: center;
+  font-size: 20px;
+  overflow: hidden;
+}
+.task-title {
+}
+
+/*~~~~~~~~$ Important And Urgent Box $~~~~~~~~*/
+.box:nth-child(1) {
+  background-color: transparent;
+  border: 4px solid rgb(215, 6, 6);
+}
+.box:nth-child(1) h2 {
+  color: rgb(215, 6, 6);
+}
+.box:nth-child(1) .task {
+  background-color: rgb(215, 6, 6);
+}
+
+/*~~~~~~~~$ Important And Not Urgent Box $~~~~~~~~*/
+.box:nth-child(2) {
+  background-color: transparent;
+  border: 4px solid rgb(8, 136, 8);
+}
+.box:nth-child(2) h2 {
+  color: rgb(8, 136, 8);
+}
+.box:nth-child(2) .task {
+  background-color: rgb(8, 136, 8);
+}
+
+/*~~~~~~~~$ Not Important And Urgent Box  $~~~~~~~~*/
+.box:nth-child(3) {
+  background-color: transparent;
+  border: 4px solid rgb(237, 158, 10);
+}
+.box:nth-child(3) h2 {
+  color: rgb(237, 158, 10);
+}
+.box:nth-child(3) .task {
+  background-color: rgb(237, 158, 10);
+}
+
+/*~~~~~~~~$ Not Important And NOt Urgent Box $~~~~~~~~*/
+.box:nth-child(4) {
+  background-color: transparent;
+  border: 4px solid #bfbaba;
+}
+.box:nth-child(4) h2 {
+  color: #bfbaba;
+}
+.box:nth-child(4) .task {
+  background-color: #bfbaba;
+}
+
+.btns {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.task .btn {
+  height: 25px;
+  width: 40px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: capitalize;
+  transition: 0.4s ease-in-out;
+}
+.task .btn:hover {
+  background-color: #333;
+  color: #fff;
+}
+.deleteAll {
+  width: 50%;
+  padding: 8px 0px;
+  border-radius: 8px;
+  border: none;
+  margin-bottom: 20px;
+  font-size: 15px;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: 0.4s ease-in-out;
+  background-color: rgb(195, 7, 7);
+  display: none;
+}
+.deleteAll:hover {
+  background-color: red;
+  color: #fff;
+  cursor: pointer;
+  letter-spacing: 2px;
+}
+.task-info {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/*~~~~~~~~$ Task dynamic Styling $~~~~~~~~*/
+.done {
+  opacity: 0.5;
+  transition: all 0.3s ease-in-out;
+}
+.done p {
+  text-decoration: line-through;
+}
+input[type="checkbox"] {
+  width: 1.2rem;
+  height: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+.fall {
+  transform: translateY(8rem) scale(0.8) rotate(20deg);
+  opacity: 0;
+  transition: all 0.5s ease-in-out;
+}
+
+footer {
+  width: 100%;
+  background-color: #1b1b1b;
+  margin-top: auto;
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+}
+
+/*~~~~~~~~$ media query (tablet) $~~~~~~~~*/
+@media screen and (max-width: 1024px) {
+  .taskData {
+    width: 100%;
+  }
+  .taskData p a {
+    display: block;
+    margin-top: 10px;
+    text-align: center;
+  }
+  .dataInput {
+    width: 90%;
+  }
+  #delete-btn,
+  #update-btn {
+    width: 40px;
+  }
+
+  #add-btn {
+    width: 90%;
+  }
+  .taskBox {
+    flex-direction: column;
+  }
+  .box {
+    width: 100%;
+  }
+  .tasks-info {
+    width: 90%;
+  }
+  .task {
+    align-items: center;
+  }
+  .task .btn {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .deleteAll {
+    width: 80%;
+  }
+  .footer {
+    font-size: 0.75rem;
+  }
+}
+
+/*~~~~~~~~$ media query (phone) $~~~~~~~~*/
+@media screen and (max-width: 768px) {
+  .taskData {
+    width: 100%;
+  }
+  .taskData p a {
+    display: block;
+    margin-top: 10px;
+    text-align: center;
+  }
+  .dataInput {
+    width: 90%;
+  }
+  #delete-btn,
+  #update-btn {
+    width: 40px;
+  }
+
+  #add-btn {
+    width: 90%;
+  }
+  .taskBox {
+    flex-direction: column;
+  }
+  .box {
+    width: 100%;
+  }
+  .tasks-info {
+    width: 90%;
+  }
+  .task {
+    align-items: center;
+  }
+  .task .btn {
+    width: 80%;
+    margin-bottom: 10px;
+  }
+  .deleteAll {
+    width: 80%;
+  }
+  .footer {
+    font-size: 0.75rem;
+  }
+}
+/*------------------! End Task Boxes Styling !------------------*/
