@@ -5,6 +5,7 @@
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
+
 body {
   background: rgb(19, 19, 19);
   height: 100vh;
@@ -14,6 +15,7 @@ body {
   align-items: center;
   gap: 20px;
 }
+
 .container {
   width: 90%;
   margin: 0 auto;
@@ -23,6 +25,7 @@ body {
   justify-content: center;
   align-items: center;
 }
+
 a {
   text-decoration: none;
   font-weight: bold;
@@ -31,9 +34,11 @@ a {
   text-decoration: underline;
   text-align: center;
 }
+
 a:hover {
   color: rgb(14, 27, 171);
 }
+
 /*------------------! End Global Styling !------------------*/
 
 /*------------------! Start Header Styling !------------------*/
@@ -49,15 +54,18 @@ a:hover {
   align-items: center;
   border-radius: 10px;
 }
+
 .taskData h1 {
   color: #fff;
   font-size: 2rem;
   margin: 20px 0;
 }
+
 .dataInput {
   gap: 10px;
   width: 60%;
 }
+
 form div {
   display: flex;
   flex-direction: column;
@@ -67,6 +75,7 @@ form div {
   font-weight: 600;
   margin-bottom: 1rem;
 }
+
 input {
   padding: 10px;
   border-radius: 8px;
@@ -74,6 +83,7 @@ input {
   outline: none;
   font-size: 20px;
 }
+
 .selection-box {
   padding: 10px;
   border-radius: 5px;
@@ -88,12 +98,14 @@ input {
   font-size: 16px;
   font-weight: 600;
 }
+
 .selection-box option {
   font-size: 16px;
   font-weight: 600;
   text-transform: capitalize;
   cursor: pointer;
 }
+
 #add-btn {
   width: 60%;
   background: rgb(224, 164, 44);
@@ -106,12 +118,14 @@ input {
   text-transform: uppercase;
   transition: 0.4s ease-in-out;
 }
+
 #add-btn:hover {
   background-color: #333;
   color: #fff;
   cursor: pointer;
   letter-spacing: 2px;
 }
+
 /*------------------! End Header Styling !------------------*/
 
 /*------------------! Start Task Boxes Styling !------------------*/
@@ -121,6 +135,7 @@ input {
   justify-content: space-around;
   align-items: flex-start;
 }
+
 .box {
   background-color: #222;
   width: 24%;
@@ -132,11 +147,13 @@ input {
   gap: 20px;
   border-radius: 10px;
 }
+
 .box h2 {
   margin-top: 20px;
   text-align: center;
   text-transform: capitalize;
 }
+
 .tasks-info {
   width: 100%;
   display: flex;
@@ -145,6 +162,7 @@ input {
   align-items: center;
   gap: 10px;
 }
+
 .task {
   display: flex;
   align-items: center;
@@ -157,17 +175,19 @@ input {
   font-size: 20px;
   overflow: hidden;
 }
-.task-title {
-}
+
+.task-title {}
 
 /*~~~~~~~~$ Important And Urgent Box $~~~~~~~~*/
 .box:nth-child(1) {
   background-color: transparent;
   border: 4px solid rgb(215, 6, 6);
 }
+
 .box:nth-child(1) h2 {
   color: rgb(215, 6, 6);
 }
+
 .box:nth-child(1) .task {
   background-color: rgb(215, 6, 6);
 }
@@ -177,9 +197,11 @@ input {
   background-color: transparent;
   border: 4px solid rgb(8, 136, 8);
 }
+
 .box:nth-child(2) h2 {
   color: rgb(8, 136, 8);
 }
+
 .box:nth-child(2) .task {
   background-color: rgb(8, 136, 8);
 }
@@ -189,9 +211,11 @@ input {
   background-color: transparent;
   border: 4px solid rgb(237, 158, 10);
 }
+
 .box:nth-child(3) h2 {
   color: rgb(237, 158, 10);
 }
+
 .box:nth-child(3) .task {
   background-color: rgb(237, 158, 10);
 }
@@ -201,9 +225,11 @@ input {
   background-color: transparent;
   border: 4px solid #bfbaba;
 }
+
 .box:nth-child(4) h2 {
   color: #bfbaba;
 }
+
 .box:nth-child(4) .task {
   background-color: #bfbaba;
 }
@@ -214,6 +240,7 @@ input {
   justify-content: center;
   gap: 10px;
 }
+
 .task .btn {
   height: 25px;
   width: 40px;
@@ -226,10 +253,12 @@ input {
   text-transform: capitalize;
   transition: 0.4s ease-in-out;
 }
+
 .task .btn:hover {
   background-color: #333;
   color: #fff;
 }
+
 .deleteAll {
   width: 50%;
   padding: 8px 0px;
@@ -239,16 +268,19 @@ input {
   font-size: 15px;
   font-weight: bold;
   text-transform: uppercase;
-  transition: 0.4s ease-in-out;
+  /* transition: 0.2s ease-in-out; */
   background-color: rgb(195, 7, 7);
   display: none;
+  color: white;
 }
+
 .deleteAll:hover {
   background-color: red;
   color: #fff;
   cursor: pointer;
   letter-spacing: 2px;
 }
+
 .task-info {
   width: 100%;
   display: flex;
@@ -261,15 +293,18 @@ input {
   opacity: 0.5;
   transition: all 0.3s ease-in-out;
 }
+
 .done p {
   text-decoration: line-through;
 }
+
 input[type="checkbox"] {
   width: 1.2rem;
   height: 1.2rem;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
 }
+
 .fall {
   transform: translateY(8rem) scale(0.8) rotate(20deg);
   opacity: 0;
@@ -290,14 +325,17 @@ footer {
   .taskData {
     width: 100%;
   }
+
   .taskData p a {
     display: block;
     margin-top: 10px;
     text-align: center;
   }
+
   .dataInput {
     width: 90%;
   }
+
   #delete-btn,
   #update-btn {
     width: 40px;
@@ -306,25 +344,32 @@ footer {
   #add-btn {
     width: 90%;
   }
+
   .taskBox {
     flex-direction: column;
   }
+
   .box {
     width: 100%;
   }
+
   .tasks-info {
     width: 90%;
   }
+
   .task {
     align-items: center;
   }
+
   .task .btn {
     width: 100%;
     margin-bottom: 10px;
   }
+
   .deleteAll {
     width: 80%;
   }
+
   .footer {
     font-size: 0.75rem;
   }
@@ -335,14 +380,17 @@ footer {
   .taskData {
     width: 100%;
   }
+
   .taskData p a {
     display: block;
     margin-top: 10px;
     text-align: center;
   }
+
   .dataInput {
     width: 90%;
   }
+
   #delete-btn,
   #update-btn {
     width: 40px;
@@ -351,27 +399,51 @@ footer {
   #add-btn {
     width: 90%;
   }
+
   .taskBox {
     flex-direction: column;
   }
+
   .box {
     width: 100%;
   }
+
   .tasks-info {
     width: 90%;
   }
+
   .task {
     align-items: center;
   }
+
   .task .btn {
     width: 80%;
     margin-bottom: 10px;
   }
+
   .deleteAll {
     width: 80%;
   }
+
   .footer {
     font-size: 0.75rem;
   }
 }
+
+.excel-btn {
+  width: 300px;
+  font-size: 24px;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: #147749;
+  color: white;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+}
+
+.excel-btn:hover {
+  background-color: white;
+  color: #053820;
+}
+
 /*------------------! End Task Boxes Styling !------------------*/

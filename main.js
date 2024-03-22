@@ -3,7 +3,9 @@ let input = document.getElementById("input");
 let addBtn = document.getElementById("add-btn");
 let selections = document.querySelector(".selection-box");
 let taskBox = document.querySelector(".taskBox");
-let box = document.querySelector(".box");
+let boxs = document.querySelectorAll(".box");
+let excelBtn = document.querySelector(".excel-btn");
+let drag = null;
 
 /*~~~~~~~~$ task div containers "contains task info" $~~~~~~~~*/
 let taskDiv1 = document.querySelector(".taskDiv1");
@@ -21,7 +23,6 @@ let notImportantNotUrgent_div = document.getElementById(
 
 /*~~~~~~~~$ delete all btn $~~~~~~~~*/
 let deleteAllBtn = document.querySelectorAll(".deleteAll");
-
 
 /*~~~~~~~~$ main global variables $~~~~~~~~*/
 let selectedOption;
@@ -70,7 +71,7 @@ addBtn.onclick = function () {
     let obj = {
       type: selectedOption,
       title: task,
-      id: Date.now(),
+      id: crypto.randomUUID(),
       status: "",
     };
 
@@ -90,6 +91,118 @@ addBtn.onclick = function () {
   // ? display task
   displayTask();
 };
+
+/*~~~~~~~~$ drag and drop $~~~~~~~~*/
+function dragAndDropItem() {
+  let tasks = document.querySelectorAll(".task");
+
+  tasks.forEach((task) => {
+    task.addEventListener("dragstart", function (event) {
+      event.dataTransfer.setData("text/plain", this.id);
+
+      const obj = tasksData.filter((ele) => ele.id === this.id)[0];
+      drag = obj;
+      task.style.opacity = "0.5";
+    });
+
+    task.addEventListener("dragend", function () {
+      drag = null;
+      task.style.opacity = "1";
+    });
+
+    boxs.forEach((box) => {
+      box.addEventListener("dragover", function (event) {
+        event.preventDefault();
+        if (this.id === "important-urgent") {
+          this.style.background = "rgb(215, 6, 6)";
+          this.querySelector("h2").style.color = "#fff";
+          this.querySelector(".deleteAll").style.color = "rgb(215, 6, 6)";
+          this.querySelector(".deleteAll").style.background = "#fff";
+        } else if (this.id === "important-not-urgent") {
+          this.style.background = "rgb(8, 136, 8)";
+          this.querySelector("h2").style.color = "#fff";
+          this.querySelector(".deleteAll").style.color = "rgb(215, 6, 6)";
+          this.querySelector(".deleteAll").style.background = "#fff";
+        } else if (this.id === "not-important-urgent") {
+          this.style.background = "rgb(237, 158, 10)";
+          this.querySelector("h2").style.color = "#fff";
+          this.querySelector(".deleteAll").style.color = "rgb(215, 6, 6)";
+          this.querySelector(".deleteAll").style.background = "#fff";
+        } else if (this.id === "not-important-not-urgent") {
+          this.style.background = "#bfbaba";
+          this.querySelector("h2").style.color = "#000";
+          this.querySelector(".deleteAll").style.color = "rgb(215, 6, 6)";
+          this.querySelector(".deleteAll").style.background = "#fff";
+        }
+      });
+
+      box.addEventListener("dragleave", function () {
+        if (this.id === "important-urgent") {
+          this.style.background = "transparent";
+          this.querySelector("h2").style.color = "rgb(215, 6, 6)";
+          this.querySelector(".deleteAll").style.color = "white";
+          this.querySelector(".deleteAll").style.background = "rgb(195, 7, 7)";
+        } else if (this.id === "important-not-urgent") {
+          this.style.background = "transparent";
+          this.querySelector("h2").style.color = "rgb(8, 136, 8)";
+          this.querySelector(".deleteAll").style.color = "white";
+          this.querySelector(".deleteAll").style.background = "rgb(195, 7, 7)";
+        } else if (this.id === "not-important-urgent") {
+          this.style.background = "transparent";
+          this.querySelector("h2").style.color = "rgb(237, 158, 10)";
+          this.querySelector(".deleteAll").style.color = "white";
+          this.querySelector(".deleteAll").style.background = "rgb(195, 7, 7)";
+        } else if (this.id === "not-important-not-urgent") {
+          this.style.background = "transparent";
+          this.querySelector("h2").style.color = "#bfbaba";
+          this.querySelector(".deleteAll").style.color = "white";
+          this.querySelector(".deleteAll").style.background = "rgb(195, 7, 7)";
+        }
+      });
+
+      box.addEventListener("drop", function (event) {
+        newObj = {
+          ...drag,
+          type: box.id,
+        };
+
+        const draggedId = event.dataTransfer.getData("text/plain");
+
+        tasksData.forEach((item, index) => {
+          if (item.id === newObj.id) {
+            tasksData[index] = newObj;
+          }
+        });
+
+        localStorage.setItem("tasks", JSON.stringify(tasksData));
+
+        if (this.id === "important-urgent") {
+          this.style.background = "transparent";
+          this.querySelector("h2").style.color = "rgb(215, 6, 6)";
+          this.querySelector(".deleteAll").style.color = "white";
+          this.querySelector(".deleteAll").style.background = "rgb(195, 7, 7)";
+        } else if (this.id === "important-not-urgent") {
+          this.style.background = "transparent";
+          this.querySelector("h2").style.color = "rgb(8, 136, 8)";
+          this.querySelector(".deleteAll").style.color = "white";
+          this.querySelector(".deleteAll").style.background = "rgb(195, 7, 7)";
+        } else if (this.id === "not-important-urgent") {
+          this.style.background = "transparent";
+          this.querySelector("h2").style.color = "rgb(237, 158, 10)";
+          this.querySelector(".deleteAll").style.color = "white";
+          this.querySelector(".deleteAll").style.background = "rgb(195, 7, 7)";
+        } else if (this.id === "not-important-not-urgent") {
+          this.style.background = "transparent";
+          this.querySelector("h2").style.color = "#bfbaba";
+          this.querySelector(".deleteAll").style.color = "white";
+          this.querySelector(".deleteAll").style.background = "rgb(195, 7, 7)";
+        }
+
+        displayTask();
+      });
+    });
+  });
+}
 
 /*~~~~~~~~$ enable update, delete , delete all btns and checkbox after updating mood $~~~~~~~~*/
 function enableTaskAndBtns() {
@@ -127,12 +240,14 @@ function displayTask() {
 
   tasksData.forEach((element) => {
     let data = `
-      <div class="task ${element.type} ${element.status}" id="${element.id}">
+      <div class="task ${element?.type} ${element?.status}" id="${
+      element?.id
+    }" draggable="true">
       <div class="task-info">
       <input type="checkbox" class="checkTask" id="checkTask" ${
-        element.status && "checked"
+        element?.status && "checked"
       }/>
-      <p class="task-title">${element.title}</p>
+      <p class="task-title">${element?.title}</p>
       </div>
         
         <div class="btns">
@@ -142,18 +257,19 @@ function displayTask() {
       </div>
     `;
 
-    if (element.type === "important-urgent") {
+    if (element?.type === "important-urgent") {
       taskDiv1.innerHTML += data;
-    } else if (element.type === "important-not-urgent") {
+    } else if (element?.type === "important-not-urgent") {
       taskDiv2.innerHTML += data;
-    } else if (element.type === "not-important-urgent") {
+    } else if (element?.type === "not-important-urgent") {
       taskDiv3.innerHTML += data;
-    } else if (element.type === "not-important-not-urgent") {
+    } else if (element?.type === "not-important-not-urgent") {
       taskDiv4.innerHTML += data;
     }
 
     showDeleteAllBtn();
     enableTaskAndBtns();
+    dragAndDropItem();
   });
 }
 
@@ -285,9 +401,58 @@ taskBox.addEventListener("click", function (e) {
   }
 });
 
+/*~~~~~~~~$ exportToExcel $~~~~~~~~*/
+function exportToExcel(fileName, data) {
+  // Create a new Workbook
+  const workbook = XLSX.utils.book_new();
+
+  // Convert the array of objects into a worksheet
+  const worksheet = XLSX.utils.json_to_sheet(data);
+
+  // Add the worksheet to the Workbook
+  XLSX.utils.book_append_sheet(workbook, worksheet, "Sheet1");
+
+  // Generate the Excel file in binary form
+  const excelData = XLSX.write(workbook, { type: "binary" });
+
+  // Convert the binary Excel data to a Blob
+  const blob = new Blob([s2ab(excelData)], {
+    type: "application/octet-stream",
+  });
+
+  // Create a download link for the Blob
+  const link = document.createElement("a");
+  link.href = window.URL.createObjectURL(blob);
+  link.setAttribute("download", `${fileName}.xlsx`);
+
+  // Append the link to the DOM and trigger the download
+  document.body.appendChild(link);
+  link.click();
+
+  // Clean up by removing the link
+  document.body.removeChild(link);
+}
+
+// Function to convert s to an array buffer
+function s2ab(s) {
+  const buf = new ArrayBuffer(s.length);
+  const view = new Uint8Array(buf);
+  for (let i = 0; i < s.length; i++) {
+    view[i] = s.charCodeAt(i) & 0xff;
+  }
+  return buf;
+}
+
+excelBtn.onclick = () => {
+  if (tasksData.length) {
+    exportToExcel("my_tasks", tasksData);
+  } else {
+    alert("there is no tasks to export it, please add some tasks");
+  }
+};
+
 /*~~~~~~~~$ copyrights functionality $~~~~~~~~*/
 const footer = document.getElementById("footer");
 const currentYear = new Date().getFullYear();
 footer.innerHTML = `&copy; ${currentYear} all rights reserved, build with all <span style="font-size: 1.8rem;">&#9825;</span> by </small>
 <a href="https://wa.me/+201224884609" id="site-dev" target="_blank">Mahmoud Saeed</a>`;
-
